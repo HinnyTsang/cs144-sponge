@@ -1,0 +1,9 @@
+version: "0.0.1"
+services:
+  cs144:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/home/cs144/
+

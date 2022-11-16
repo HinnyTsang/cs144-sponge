@@ -9,7 +9,13 @@ docker-build:
 .PHONY: setup-build-directory
 setup-build-directory:
 	$(DOCKERRUN) $(CONTAINER) mkdir -p ./build
-	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) cmake ..
-	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) make -j10
+	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) ../scripts/build.sh
 
+# Usage: make chaek lab=n
+.PHONY: check
+check:
+	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) make check_lab$(lab)
 
+.PHONT: format
+format:
+	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) make format

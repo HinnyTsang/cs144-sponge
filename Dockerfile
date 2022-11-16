@@ -1,13 +1,10 @@
 FROM ubuntu:18.04
 
 # Install dev tools
-RUN apt update && apt install g++-8 -y && \
-    cp /usr/bin/g++-8 /usr/bin/g++
+RUN apt update && apt install g++-8 -y
 
 RUN apt install clang-tidy-7 -y && \
-    apt install clang-format-7 -y && \
-    cp /usr/bin/clang-tidy-7 /usr/bin/clang-tidy && \
-    cp /usr/bin/clang-format-7 /usr/bin/clang-format
+    apt install clang-format-7 -y
 
 RUN apt install cmake -y && \
     apt install libpcap-dev -y

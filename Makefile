@@ -6,10 +6,14 @@ CONTAINER := cs144
 docker-build:
 	docker-compose build
 
-.PHONY: setup-build-directory
-setup-build-directory:
+.PHONY: setup
+setup:
 	$(DOCKERRUN) $(CONTAINER) mkdir -p ./build
-	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) ../scripts/build.sh
+	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) ../scripts/setup.sh
+
+.PHONY: build
+build:
+	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) make
 
 # Usage: make chaek lab=n
 .PHONY: check

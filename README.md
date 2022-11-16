@@ -4,9 +4,9 @@ For build prereqs, see [the CS144 VM setup instructions](https://web.stanford.ed
 
 To set up your build directory:
 
-	$ mkdir -p <path/to/sponge>/build
-	$ cd <path/to/sponge>/build
-	$ cmake ..
+    $ mkdir -p <path/to/sponge>/build
+    $ cd <path/to/sponge>/build
+    $ cmake ..
 
 **Note:** all further commands listed below should be run from the `build` dir.
 
@@ -71,3 +71,21 @@ To format (you'll need `clang-format`):
 To see all available targets,
 
     $ make help
+
+## Docker quickstart
+
+To setup the image:
+
+    $ make docker-build
+
+To build:
+
+    $ make setup-build-directory
+
+To format:
+
+    $ make format
+
+To test:
+
+    $ make check lab=N *(replacing N with a checkpoint number)*

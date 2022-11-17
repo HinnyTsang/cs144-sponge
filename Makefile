@@ -23,3 +23,7 @@ check:
 .PHONT: format
 format:
 	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) make format
+
+.PHONY: lab0
+lab0:
+	$(DOCKERRUN) $(BUILD_DIR) $(CONTAINER) ../scripts/lab0.sh

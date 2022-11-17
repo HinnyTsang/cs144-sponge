@@ -1,3 +1,39 @@
+## Docker quickstart
+
+This repo is a modified version of cs144-sponge running with docker.
+
+To setup the image:
+
+```
+make docker-build
+```
+
+To build:
+
+```
+make setup-build-directory
+```
+
+To format:
+
+```bash
+make format
+```
+
+To test:
+
+```bash
+make check lab=N *(replacing N with a checkpoint number)*
+```
+
+Run lab scripts:
+
+```bash
+make labN *(replacing N with a checkpoint number)*
+```
+
+---
+
 For build prereqs, see [the CS144 VM setup instructions](https://web.stanford.edu/class/cs144/vm_howto).
 
 ## Sponge quickstart
@@ -71,21 +107,3 @@ To format (you'll need `clang-format`):
 To see all available targets,
 
     $ make help
-
-## Docker quickstart
-
-To setup the image:
-
-    $ make docker-build
-
-To build:
-
-    $ make setup-build-directory
-
-To format:
-
-    $ make format
-
-To test:
-
-    $ make check lab=N *(replacing N with a checkpoint number)*

@@ -1,6 +1,7 @@
 DOCKERRUN := docker-compose run
 BUILD_DIR := --workdir /home/cs144/build
 CONTAINER := cs144
+.DEFAULT_GOAL := build
 
 .PHONY: docker-build
 docker-build:

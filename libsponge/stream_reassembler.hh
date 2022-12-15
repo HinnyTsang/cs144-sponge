@@ -4,7 +4,26 @@
 #include "byte_stream.hh"
 
 #include <cstdint>
+#include <set>
 #include <string>
+
+class UnassembledStream {
+  private:
+    size_t index;
+    std::string data;
+    bool eof;
+
+  public:
+    UnassembledStream(size_t _index, const std::string &_data, const bool &_eol)
+        : index(_index), data(_data), eof(_eol) {}
+
+    bool operator<(const UnassembledStream &other) const { return index < other.get_index(); }
+
+    std::string get_data() const { return data; }
+    size_t get_index() const { return index; }
+    size_t get_size() const { return data.size(); }
+    bool is_eof() const { return eof; }
+};
 
 //! \brief A class that assembles a series of excerpts from a byte stream (possibly out of order,
 //! possibly overlapping) into an in-order byte stream.
@@ -14,6 +33,9 @@ class StreamReassembler {
 
     ByteStream _output;  //!< The reassembled in-order byte stream
     size_t _capacity;    //!< The maximum number of bytes
+    std::set<UnassembledStream> unassembled_streams;
+    size_t _unassembled_bytes;
+    size_t _index_to_read;
 
   public:
     //! \brief Construct a `StreamReassembler` that will store up to `capacity` bytes.
